@@ -1,20 +1,28 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page } from '@playwright/test';
+import { LoginLocators } from '../locators/loginLocators.ts';
 import HomePage from './HomePage.ts';
+import findValidElement from '../utils/selfHealingLocators.utils.ts';
 
 export default class LoginPage {
-  private readonly emailInputLocator="#email";
-  private readonly passwordInputLocator='#password';
-  private readonly signInButtonLocator='#login-btn';
+  private readonly emailInputLocator=LoginLocators.emailInput;
+  private readonly passwordInputLocator=LoginLocators.passwordInput;
+  private readonly signInButtonLocator=LoginLocators.loginButton;
 
   constructor(private page: Page) {
   }
 
   async fillEmail(email: string) {
-    await this.page.locator(this.emailInputLocator).fill(email);
+    const validElement = await findValidElement(this.page, this.emailInputLocator);
+    if (validElement) {
+      await validElement.fill(email);
+    }
   }
 
   async fillPassword(password: string) {
-    await this.page.locator(this.passwordInputLocator).fill(password);
+    const validElement = await findValidElement(this.page, this.passwordInputLocator);
+    if (validElement) {
+      await validElement.fill(password);
+    }
   }
 
   async navigateToLoginPage() {
@@ -23,7 +31,7 @@ export default class LoginPage {
   }
 
   async clickSignIn() {
-    await this.page.locator(this.signInButtonLocator).click()
+    await this.page.click(this.signInButtonLocator)
     .catch((error) => {
       console.error('Error clicking the Sign In button:', error);
     });
