@@ -6,7 +6,12 @@ browsers location -> C:\Users\USERNAME\AppData\Local\ms-playwright
 
 ffmpeg-1013 ->> for video recording
 
-to run the tests from terminal: npx playwright test loginTest.spec.ts --headed (In order not to be in headless mode)
+to run the tests from terminal: npx playwright test loginTest.spec.ts --headed --project=chromium(In order not to be in headless mode)
 then show report: npx playwright show-report
 
 we can set NODE_ENV env variable to manage which .env file will use
+
+I can create an event with the same name, but will replace the old one (shouldn't happen)
+Total seats field accepts any number and when press add event, an ambiguous error appear 
+
+API contract: What are the exact request fields, response fields?

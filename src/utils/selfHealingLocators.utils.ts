@@ -1,6 +1,6 @@
 import { Page, Locator } from "@playwright/test";
 
-export default async function findValidElement(page: Page, locators: string[]): Promise<Locator | null>
+export async function findValidElement(page: Page, locators: string[]): Promise<Locator | null>
 {
   let validElement: Locator | null = null;
   const TIMEOUT_MS = 5000;
@@ -22,4 +22,28 @@ export default async function findValidElement(page: Page, locators: string[]): 
   }
 
   return validElement;
+}
+
+export async function findValidElementInScope(root: Locator, locators: string[]): Promise<Locator | null>
+{
+  const TIMEOUT_MS = 5000;
+
+  for (const locator of locators) {
+    try {
+      const element = root.locator(locator);
+      await element.waitFor({ state: "attached", timeout: TIMEOUT_MS });
+      const count = await element.count();
+
+      if (count === 1) {
+        return element;
+      }
+
+      console.error(`Locator matched ${count} elements in scope: ${locator}`);
+    } catch (error) {
+      console.error(`Invalid locator in scope: ${locator}`);
+    }
+  }
+
+  console.error("No unique valid element found in scope");
+  return null;
 }

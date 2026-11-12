@@ -8,3 +8,4 @@ node_modules/
 /playwright/.auth/
 
 src/config/.env
+src/config/.auth

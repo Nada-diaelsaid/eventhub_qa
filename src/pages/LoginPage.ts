@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import { LoginLocators } from '../locators/loginLocators.ts';
 import HomePage from './HomePage.ts';
-import findValidElement from '../utils/selfHealingLocators.utils.ts';
+import { findValidElement } from '../utils/selfHealingLocators.utils.ts';
 
 export default class LoginPage {
   private readonly emailInputLocator=LoginLocators.emailInput;
