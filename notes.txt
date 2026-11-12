@@ -7,3 +7,6 @@ browsers location -> C:\Users\USERNAME\AppData\Local\ms-playwright
 ffmpeg-1013 ->> for video recording
 
 to run the tests from terminal: npx playwright test loginTest.spec.ts --headed (In order not to be in headless mode)
+then show report: npx playwright show-report
+
+we can set NODE_ENV env variable to manage which .env file will use
