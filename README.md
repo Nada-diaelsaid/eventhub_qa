@@ -141,4 +141,11 @@ This is a fallback mechanism, not automatic selector generation: it only handles
 
 ## Continuous integration
 
-`.github/workflows/playwright.yml` runs on pushes and pull requests targeting `main` or `master`. It installs dependencies and Playwright browsers, runs the Chromium suite, uploads the HTML artifact, and publishes the CTRF summary even when tests fail, as long as Playwright generated a report.
+The `.github/workflows/playwright.yml` workflow:
+
+- Runs on pushes and pull requests targeting `main` or `master`.
+- Uses an Ubuntu runner, sets up the latest LTS version of Node.js, and installs npm dependencies and Playwright browsers.
+- Sensitive test values such as credentials and API tokens are configured as GitHub Actions secrets. Map them to environment variables for the test process, and keep them out of the workflow source and repository.
+- Runs the Playwright suite on Chromium.
+- Uploads the interactive HTML report as the `playwright-report` artifact, retained for 30 days.
+- Publishes the CTRF summary and test table to the Actions run, including failed runs when Playwright generated the CTRF report.
