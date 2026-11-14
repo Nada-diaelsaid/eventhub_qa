@@ -115,6 +115,7 @@ src/
   validators/    Reusable API response assertions
 fixtures/
   apiFixtures.ts Authenticated API context and BookingService injection
+  uiFixtures.ts  Authenticated browser page with bookings cleared before the UI test
 tests/
   APIs/          API behavior specs
   UI/            Browser behavior specs
@@ -125,7 +126,7 @@ tests/
 - **API client:** owns the common HTTP transport, leaving endpoint paths out of test code.
 - **Services:** express EventHub operations such as creating, retrieving, and deleting bookings.
 - **Payload builders:** keep request data typed and reusable, and reject invalid event IDs before sending.
-- **Fixtures:** provide an authenticated API client and services to specs, and dispose the request context afterward.
+- **Fixtures:** provide an authenticated API client or a preconditioned browser page to specs, and clean up their request/browser contexts afterward. The UI fixture clears existing bookings before the booking scenario.
 - **Validators:** share status/content-type assertions so tests report useful failures consistently.
 - **Page objects and locators:** keep browser interactions and selector changes out of the test scenarios.
 - **Tests:** describe behavior: the API specs cover booking creation, retrieval, cancellation, and invalid event IDs; the UI booking spec checks ticket totals and the My Bookings list.
