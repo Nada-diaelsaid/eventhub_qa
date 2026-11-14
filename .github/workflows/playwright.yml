@@ -27,3 +27,40 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+      - name: Upload JUnit report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-junit
+          path: test-results/junit.xml
+          retention-days: 30
+  playwright-report:
+    if: ${{ always() && needs.playwright-test.result != 'cancelled' }}
+    needs: playwright-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download JUnit report
+        id: download-report
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-junit
+          path: test-results
+      - name: Publish Playwright summary
+        if: steps.download-report.outcome == 'success'
+        uses: ctrf-io/github-test-reporter@v1
+        with:
+          report-path: test-results/junit.xml
+          summary-report: true
+          integrations-config: |
+            {
+              "junit-to-ctrf": {
+                "enabled": true,
+                "action": "convert",
+                "options": {
+                  "output": "ctrf-report.json",
+                  "toolname": "playwright",
+                  "useSuiteName": false
+                }
+              }
+            }
