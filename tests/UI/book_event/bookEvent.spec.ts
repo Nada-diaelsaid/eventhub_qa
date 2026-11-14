@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
-import { EventsPage } from '../../src/pages/EventsPage.ts';
-import { BookEventPage } from '../../src/pages/BookEventPage.ts';
-import { HomePage } from '../../src/pages/HomePage.ts';
+import { EventsPage } from '../../../src/pages/EventsPage.ts';
+import { BookEventPage } from '../../../src/pages/BookEventPage.ts';
+import { HomePage } from '../../../src/pages/HomePage.ts';
 
 const authFile = "src/config/.auth/user.json";
 
