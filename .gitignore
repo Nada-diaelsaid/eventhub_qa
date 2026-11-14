@@ -3,6 +3,7 @@
 node_modules/
 /test-results/
 /playwright-report/
+/ctrf/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
