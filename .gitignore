@@ -7,5 +7,5 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 
-src/config/.env
-src/config/.auth
+#src/config/.env
+#src/config/.auth
