@@ -59,5 +59,5 @@ test("Book event Hollywood Monsoon Night — Los Angeles", async ({ bookingsClea
   await homePage.clickMyBookings();
   // confirm we are on the My Bookings page
   await expect(page.getByRole('button', { name: 'Clear all bookings' })).toBeVisible();
-  // await expect(page.getByText(eventName)).toBeVisible();
+  await expect(page.getByRole('main')).toContainText(eventName.split('—')[0].trim());
 });
