@@ -15,3 +15,10 @@ I can create an event with the same name, but will replace the old one (shouldn'
 Total seats field accepts any number and when press add event, an ambiguous error appear 
 
 API contract: What are the exact request fields, response fields?
+
+TODO:
+API testing
+convert UI to API
+GitHub actions.
+Complete adding tests to cancel booking.
+Start writing the READme file

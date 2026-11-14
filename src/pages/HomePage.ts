@@ -1,8 +1,11 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page } from '@playwright/test';
+import { HomePageLocators } from '../locators/homePageLocators';
 
-export default class HomePage {
-    private readonly homeTitleLocator = "Service";
-
+export class HomePage {
     constructor(private page: Page) {
+    }
+
+    async clickMyBookings(): Promise<void> {
+        await this.page.locator(HomePageLocators.myBookingsButton[0]).click();
     }
 }

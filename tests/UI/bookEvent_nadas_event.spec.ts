@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { EventsPage } from '../src/pages/EventsPage.ts';
+import { EventsPage } from '../../src/pages/EventsPage.ts';
 
 const authFile = "src/config/.auth/user.json";
 
@@ -9,7 +9,7 @@ test("opens Nada's event from its Book Now button", async ({ browser }) => {
   ///////////////////////////////////////////////////////////////////////////////////////////////
   // login using auth file.
   ///////////////////////////////////////////////////////////////////////////////////////////////
-  const context = await browser.newContext({ storageState: authFile });
+  const context = await browser.newContext({ storageState: authFile  });
   const page = await context.newPage();
   await page.goto("/");
 

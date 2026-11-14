@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import LoginPage from '../src/pages/LoginPage.ts';
-import { encrypt, decrypt } from '../src/utils/cryptoJS.util.ts';
+import LoginPage from '../../src/pages/LoginPage.ts';
+import { encrypt, decrypt } from '../../src/utils/cryptoJS.util.ts';
 
 test('Login', async ({ page }) => {
   // const encryptedText = encrypt(process.env.EVENTHUB_EMAIL!);

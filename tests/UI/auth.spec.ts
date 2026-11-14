@@ -1,6 +1,6 @@
 import { test as setup, expect } from '@playwright/test';
-import LoginPage from '../src/pages/LoginPage.ts';
-import { encrypt, decrypt } from '../src/utils/cryptoJS.util.ts';
+import LoginPage from '../../src/pages/LoginPage.ts';
+import { encrypt, decrypt } from '../../src/utils/cryptoJS.util.ts';
 
 const authFile = 'src/config/.auth/user.json';
 

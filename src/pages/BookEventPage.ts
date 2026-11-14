@@ -25,6 +25,24 @@ export class BookEventPage {
     await this._fillBookingField(BookingEventLocators.phoneInput, phoneNumber, 'Phone Number');
   }
 
+  async expectTotalAmountToMatchPriceAndQuantity(): Promise<void> {
+    const ticketPrice = Number(
+      (await this.page.locator(BookingEventLocators.pricePerTicket[0]).innerText())
+        .replace(/[^\d.]/g, ''),
+    );
+    const ticketCount = Number(
+      await this.page.locator(BookingEventLocators.ticketCount[0]).innerText(),
+    );
+    const totalAmount = Number(
+      (await this.page.locator(BookingEventLocators.totalAmount[0]).innerText())
+        .replace(/[^\d.]/g, ''),
+    );
+
+    expect(ticketPrice).toBeGreaterThan(0);
+    expect(totalAmount).toBe(ticketPrice * ticketCount);
+    console.log("totalAmount", totalAmount);
+  }
+
   async clickConfirmBookingButton(): Promise<void> {
     const form = await findValidElementInScope(this.page.locator('body'),   BookingEventLocators.bookingForm);
     const confirmButton = await findValidElementInScope(form!, BookingEventLocators.confirmBookingButton);
