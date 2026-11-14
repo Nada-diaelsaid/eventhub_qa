@@ -82,6 +82,10 @@ npx playwright test tests/UI/book_event/bookEvent.spec.ts --project=chromium
 
 Booking tests send real requests to `API_URL` or the website. The API create/get/delete scenarios create and cancel bookings; the UI booking scenario also submits a booking. Use a dedicated test environment and valid test event ID. Playwright path filters use forward slashes in these commands, including on Windows.
 
+## Test plan and test specifications
+
+The detailed test plan and test specifications are maintained in [Event_hub_qa.xlsx](./Event_hub_qa.xlsx). Refer to the workbook for the planned coverage and individual test cases; the automated Playwright specs are in the `tests/` directory.
+
 ## Reports
 
 Playwright writes:
@@ -149,3 +153,9 @@ The `.github/workflows/playwright.yml` workflow:
 - Runs the Playwright suite on Chromium.
 - Uploads the interactive HTML report as the `playwright-report` artifact, retained for 30 days.
 - Publishes the CTRF summary and test table to the Actions run, including failed runs when Playwright generated the CTRF report.
+
+## If I had more time
+
+- Set up the Playwright MCP server to support browser exploration and test development.
+- Implement the full set of test specifications documented in [Event_hub_qa.xlsx](./Event_hub_qa.xlsx).
+- Spend more time testing the APIs, including their edge cases and failure behavior.
